@@ -6,7 +6,7 @@ To use a theme add `theme = "<name>"` to the top of your [`config.toml`](./confi
 
 Create a file with the name of your theme as the file name (i.e `mytheme.toml`) and place it in your `themes` directory (i.e `~/.config/helix/themes` or `%AppData%\helix\themes` on Windows). The directory might have to be created beforehand.
 
-> 💡 The names "default" and "base16_default" are reserved for built-in themes
+> 💡 The name "rose_pine" is reserved for built-in theme
 > and cannot be overridden by user-defined themes.
 
 ### Overview
@@ -31,10 +31,8 @@ If the key contains a dot `'.'`, it must be quoted to prevent it being parsed as
 "key.key" = "#ffffff"
 ```
 
-For inspiration, you can find the default `theme.toml`
-[here](https://github.com/helix-editor/helix/blob/master/theme.toml) and
-user-submitted themes
-[here](https://github.com/helix-editor/helix/blob/master/runtime/themes).
+For inspiration, you can find the default `rose_pine.toml`
+[here](https://github.com/helix-editor/helix/blob/master/rose_pine.toml).
 
 
 ## The details of theme creation

@@ -299,8 +299,7 @@ pub mod completers {
         for rt_dir in helix_loader::runtime_dirs() {
             names.extend(theme::Loader::read_names(&rt_dir.join("themes")));
         }
-        names.push("default".into());
-        names.push("base16_default".into());
+        names.push("rose_pine".into());
         names.sort();
         names.dedup();
 
