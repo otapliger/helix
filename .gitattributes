@@ -4,5 +4,4 @@
 *.scm text diff=scheme
 *.md text diff=markdown
 
-book/theme/highlight.js linguist-vendored
 Cargo.lock text
