@@ -41,7 +41,7 @@ https://docs.helix-editor.com/building-from-source.html.
 # Contributing
 
 This is a customized and minified version of Helix, tailored to myself. For that reason I don't accept
-PRs. Contributions should be made to the official Helix repository [here](./docs/CONTRIBUTING.md).
+PRs. Contributions should be made to the official Helix repository [here](https://github.com/helix-editor/helix).
 
 # Getting help
 
