@@ -9,6 +9,10 @@ args = ["start"]
 [language-server.clangd]
 command = "clangd"
 
+[language-server.gleam]
+command = "gleam"
+args = ["lsp"]
+
 [language-server.marksman]
 command = "marksman"
 args = ["server"]
@@ -49,9 +53,6 @@ provideFormatter = true
 [language-server.yaml-language-server]
 command = "yaml-language-server"
 args = ["--stdio"]
-
-[language-server.zls]
-command = "zls"
 
 # Languages and grammars
 
@@ -213,6 +214,23 @@ scope = "source.scss"
 name = "scss"
 source = { git = "https://github.com/tree-sitter-grammars/tree-sitter-scss", rev = "8f47fa8be72ac299cab4c6aa02668635f2dcd4be" }
 
+# - Gleam
+
+[[language]]
+name = "gleam"
+auto-format = true
+comment-token = "//"
+file-types = ["gleam"]
+indent = { tab-width = 2, unit = "  " }
+injection-regex = "gleam"
+language-servers = ["gleam"]
+roots = ["gleam.toml"]
+scope = "source.gleam"
+
+[[grammar]]
+name = "gleam"
+source = { git = "https://github.com/gleam-lang/tree-sitter-gleam", rev = "426e67087fd62be5f4533581b5916b2cf010fb5b" }
+
 # - Python
 
 [[language]]
@@ -358,53 +376,3 @@ request = "attach"
 [[grammar]]
 name = "rust"
 source = { git = "https://github.com/tree-sitter/tree-sitter-rust", rev = "9c84af007b0f144954adb26b3f336495cbb320a7" }
-
-# - Zig
-
-[[language]]
-name = "zig"
-auto-format = true
-comment-token = "//"
-file-types = ["zig", "zon"]
-formatter = { command = "zig", args = ["fmt", "--stdin"] }
-indent = { tab-width = 4, unit = "    " }
-injection-regex = "zig"
-language-servers = ["zls"]
-roots = ["build.zig"]
-scope = "source.zig"
-
-[language.debugger]
-name = "lldb-dap"
-command = "lldb-dap"
-transport = "stdio"
-
-[[language.debugger.templates]]
-name = "binary"
-args = { console = "internalConsole", program = "{0}" }
-completion = [{ name = "binary", completion = "filename" }]
-request = "launch"
-
-[[language.debugger.templates]]
-name = "attach"
-args = { console = "internalConsole", pid = "{0}" }
-completion = ["pid"]
-request = "attach"
-
-[[language.debugger.templates]]
-name = "gdbserver attach"
-args = { console = "internalConsole", attachCommands = [
-    "platform select remote-gdb-server",
-    "platform connect {0}",
-    "file {1}",
-    "attach {2}",
-] }
-completion = [
-    { name = "lldb connect url", default = "connect://localhost:3333" },
-    { name = "file", completion = "filename" },
-    "pid",
-]
-request = "attach"
-
-[[grammar]]
-name = "zig"
-source = { git = "https://github.com/maxxnino/tree-sitter-zig", rev = "2bac4cc6c697d46a193905fef6d003bfa0bfabfd" }

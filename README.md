@@ -6,14 +6,18 @@ Feel free to use, but I advise you to go with the [official version](https://hel
 Language support for:
 
 - bash
-- c/c++
-- html/css/scss
+- c
+- cpp
+- css
+- gleam
+- html
 - json
+- jsonc
 - markdown
 - python
 - rust
+- scss
 - toml
-- zig
 
 Themes:
 
