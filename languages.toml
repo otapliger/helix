@@ -35,12 +35,9 @@ args = ["--stdio"]
 css.validate.enable = true
 provideFormatter = true
 
-[language-server.vscode-html-language-server]
-command = "vscode-html-language-server"
-args = ["--stdio"]
-
-[language-server.vscode-html-language-server.config]
-provideFormatter = true
+[language-server.superhtml-lsp]
+command = "superhtml"
+args = ["lsp"]
 
 [language-server.vscode-json-language-server]
 command = "vscode-json-language-server"
@@ -179,8 +176,9 @@ block-comment-tokens = { start = "<!--", end = "-->" }
 file-types = ["html"]
 indent = { tab-width = 2, unit = "  " }
 injection-regex = "html"
-language-servers = ["vscode-html-language-server"]
-scope = "text.html.basic"
+language-servers = ["superhtml-lsp"]
+roots = []
+scope = "source.html"
 
 [[grammar]]
 name = "html"
