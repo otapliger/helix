@@ -3,7 +3,7 @@ Feel free to use, but I advise you to go with the [official version](https://hel
 
 # Changes
 
-Language support for:
+Language support only for:
 
 - bash
 - c
@@ -23,6 +23,7 @@ Themes:
 
 - rosé pine (set as default)
 - everblush
+- base16
 
 # Installation
 

@@ -20,9 +20,19 @@ pub static DEFAULT_THEME_DATA: Lazy<Value> = Lazy::new(|| {
     toml::from_str(str::from_utf8(bytes).unwrap()).expect("Failed to parse base default theme")
 });
 
+pub static BASE16_THEME_DATA: Lazy<Value> = Lazy::new(|| {
+    let bytes = include_bytes!("../../base16.toml");
+    toml::from_str(str::from_utf8(bytes).unwrap()).expect("Failed to parse base 16 default theme")
+});
+
 pub static DEFAULT_THEME: Lazy<Theme> = Lazy::new(|| Theme {
     name: "rose_pine".into(),
     ..Theme::from(DEFAULT_THEME_DATA.clone())
+});
+
+pub static BASE16_THEME: Lazy<Theme> = Lazy::new(|| Theme {
+    name: "base16".into(),
+    ..Theme::from(BASE16_THEME_DATA.clone())
 });
 
 #[derive(Clone, Debug)]
@@ -45,6 +55,9 @@ impl Loader {
     pub fn load(&self, name: &str) -> Result<Theme> {
         if name == "rose_pine" {
             return Ok(self.default());
+        }
+        if name == "base16" {
+            return Ok(self.base16());
         }
 
         let mut visited_paths = HashSet::new();
@@ -83,6 +96,7 @@ impl Loader {
             let parent_theme_toml = match parent_theme_name {
                 // load default themes's toml from const.
                 "rose_pine" => DEFAULT_THEME_DATA.clone(),
+                "base16" => BASE16_THEME_DATA.clone(),
                 _ => self.load_theme(parent_theme_name, visited_paths)?,
             };
 
@@ -174,13 +188,22 @@ impl Loader {
             })
     }
 
-    pub fn default_theme(&self) -> Theme {
-        self.default()
+    pub fn default_theme(&self, true_color: bool) -> Theme {
+        if true_color {
+            self.default()
+        } else {
+            self.base16()
+        }
     }
 
     /// Returns the default theme
     pub fn default(&self) -> Theme {
         DEFAULT_THEME.clone()
+    }
+
+    /// Returns the alternative 16-color default theme
+    pub fn base16(&self) -> Theme {
+        BASE16_THEME.clone()
     }
 }
 

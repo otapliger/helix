@@ -300,6 +300,7 @@ pub mod completers {
             names.extend(theme::Loader::read_names(&rt_dir.join("themes")));
         }
         names.push("rose_pine".into());
+        names.push("base16".into());
         names.sort();
         names.dedup();
 

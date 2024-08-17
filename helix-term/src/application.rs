@@ -121,7 +121,7 @@ impl Application {
                     .ok()
                     .filter(|theme| (true_color || theme.is_16_color()))
             })
-            .unwrap_or_else(|| theme_loader.default_theme());
+            .unwrap_or_else(|| theme_loader.default_theme(true_color));
 
         let syn_loader = Arc::new(ArcSwap::from_pointee(lang_loader));
 
@@ -436,7 +436,7 @@ impl Application {
                     .ok()
                     .filter(|theme| (true_color || theme.is_16_color()))
             })
-            .unwrap_or_else(|| self.theme_loader.default_theme());
+            .unwrap_or_else(|| self.theme_loader.default_theme(true_color));
 
         self.editor.set_theme(theme);
         Ok(())
