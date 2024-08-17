@@ -10,7 +10,7 @@ Language support for:
 - cpp
 - css
 - gleam
-- html
+- html (~~vscode~~ [superhtml](https://github.com/kristoff-it/superhtml))
 - json
 - jsonc
 - markdown
