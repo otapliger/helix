@@ -2,5 +2,12 @@ target
 .direnv
 helix-term/rustfmt.toml
 result
-runtime/grammars
+README.md
+logo*.svg
+languages.toml
+screenshot.png
+runtime/
+docs/
+book/
+.github/
 .DS_Store
